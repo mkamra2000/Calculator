@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator - Mayank Kamra</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="./math.png" type="image/x-icon">
+  </head>
+  <body>
+    <div id="main">
+      <div id="header">Calculator</div>
+      <div id="container">
+        <div class="screen" id="input"></div>
+        <div class="screen" id="output">0</div>
+        <button onclick="calculate(this.id)" id="ac">AC</button>
+        <button onclick="calculate(this.id)" id="c">C</button>
+        <button onclick="calculate(this.id)" class="symbol" id="division">&#247;</button>
+        <button onclick="calculate(this.id)" class="digit" id="seven">7</button>
+        <button onclick="calculate(this.id)" class="digit" id="eight">8</button>
+        <button onclick="calculate(this.id)" class="digit" id="nine">9</button>
+        <button onclick="calculate(this.id)" class="symbol" id="multiply">&#215;</button>
+        <button onclick="calculate(this.id)" class="digit" id="six">6</button>
+        <button onclick="calculate(this.id)" class="digit" id="five">5</button>
+        <button onclick="calculate(this.id)" class="digit" id="four">4</button>
+        <button onclick="calculate(this.id)" class="symbol" id="minus">&#8722;</button>
+        <button onclick="calculate(this.id)" class="digit" id="three">3</button>
+        <button onclick="calculate(this.id)" class="digit" id="two">2</button>
+        <button onclick="calculate(this.id)" class="digit" id="one">1</button>
+        <button onclick="calculate(this.id)" class="symbol" id="plus">&#43;</button>
+        <button onclick="calculate(this.id)" class="digit" id="zero">0</button>
+        <button onclick="calculate(this.id)" id="decimal">&#8226;</button>
+        <button onclick="calculate(this.id)" class="symbol" id="equal">&#x3D;</button>
+      </div>
+      <div id="footer">
+        Created By
+        <a
+          href="https://mayankkamra.netlify.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Mayank Kamra</a
+        >
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
