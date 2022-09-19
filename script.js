@@ -1,8 +1,10 @@
 let ipString = "";
 let opString = "";
+let previousOp = "0";
 var inputContainer = document.getElementById("input");
 var outputContainer = document.getElementById("output");
 let symbols = document.getElementsByClassName("symbol");
+let digits = document.getElementsByClassName("digit");
 // Initially all the symbols are disabled
 if (ipString.length === 0) {
   document.getElementById("ac").setAttribute("disabled", true);
@@ -25,9 +27,21 @@ function calculate(id) {
     for (let s of symbols) {
       s.setAttribute("disabled", true);
     }
+    for (let d of digits) {
+      d.removeAttribute("disabled");
+    }
   }
   // Clear last digit or symbol
   if (clickedBtn === "C") {
+    if (opString === "Infinity") {
+      opString = previousOp;
+      for (let s of symbols) {
+        s.removeAttribute("disabled");
+      }
+      for (let d of digits) {
+        d.removeAttribute("disabled");
+      }
+    }
     ipString = ipString.substring(0, ipString.length - 1);
     flag = true;
     if (ipString.length === 0) {
@@ -36,6 +50,9 @@ function calculate(id) {
       document.getElementById("c").setAttribute("disabled", true);
       for (let s of symbols) {
         s.setAttribute("disabled", true);
+      }
+      for (let d of digits) {
+        d.removeAttribute("disabled");
       }
     }
   }
@@ -76,6 +93,13 @@ function calculate(id) {
     } else {
       ipString += clickedBtn;
     }
+  }
+  if (
+    ipString.charAt(ipString.length - 1) === "0" &&
+    ipString.charAt(ipString.length - 2) ===
+      document.getElementById("division").innerHTML
+  ) {
+    previousOp = opString;
   }
   if (ipString.length != 0) {
     document.getElementById("ac").removeAttribute("disabled");
@@ -119,6 +143,24 @@ function calculate(id) {
       );
     }
     opString = eval(correctNumericalString);
+  }
+  opString = "" + opString;
+  if (opString === "Infinity") {
+    for (let s of symbols) {
+      s.setAttribute("disabled", true);
+    }
+    for (let d of digits) {
+      d.setAttribute("disabled", true);
+    }
+  }
+  if (opString.charAt(0) !== "=" && isNaN(opString)) {
+    opString = "Infinity";
+    for (let s of symbols) {
+      s.setAttribute("disabled", true);
+    }
+    for (let d of digits) {
+      d.setAttribute("disabled", true);
+    }
   }
   document.getElementById("output").innerHTML =
     opString.length === 0 ? 0 : opString;
